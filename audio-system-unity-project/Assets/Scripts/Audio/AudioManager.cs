@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance { get; private set; }
 
     private EventInstance ambienceEventInst;
+    private EventInstance musicEventInst;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         InitializeAmbience(FMODEvents.instance.windAmbience);
+        InitializeMusic(FMODEvents.instance.level1Music);
     }
 
     private void InitializeAmbience(EventReference ambienceEvent)
@@ -46,6 +48,32 @@ public class AudioManager : MonoBehaviour
         float outVal;
         ambienceEventInst.getParameterByName(paramName, out outVal);
         return outVal;
+    }
+
+    private void InitializeMusic(EventReference musicEvent)
+    {
+        musicEventInst = CreateAudioInstance(musicEvent);
+        musicEventInst.start();
+    }
+
+    public void SetMusicParameter(string paramName, float paramValue)
+    {
+        musicEventInst.setParameterByName(paramName, paramValue);
+    }
+    public float GetMusicParameter(string paramName)
+    {
+        float outVal;
+        musicEventInst.getParameterByName(paramName, out outVal);
+        return outVal;
+    }
+
+    public Level1MusicArea SetMusicArea(Level1MusicArea area)
+    {
+        float oldAreaf;
+        musicEventInst.getParameterByName("Area", out oldAreaf);
+        Level1MusicArea musicArea = (Level1MusicArea)oldAreaf;
+        musicEventInst.setParameterByName("Area", (float)area);
+        return musicArea;
     }
 
     /// <summary>

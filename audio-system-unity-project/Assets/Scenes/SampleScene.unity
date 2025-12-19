@@ -12723,6 +12723,13 @@ MonoBehaviour:
       Data3: -613935681
       Data4: -742857847
     Path: event:/Ambience/Wind
+  <level1Music>k__BackingField:
+    Guid:
+      Data1: -387405332
+      Data2: 1336666960
+      Data3: -6863719
+      Data4: 1676737085
+    Path: event:/Music/Level1Music
 --- !u!1 &914068224
 GameObject:
   m_ObjectHideFlags: 0
@@ -14468,8 +14475,9 @@ GameObject:
   - component: {fileID: 1977724852}
   - component: {fileID: 1977724851}
   - component: {fileID: 1977724850}
+  - component: {fileID: 1977724853}
   m_Layer: 0
-  m_Name: WindyRegion
+  m_Name: BlueRegion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14550,6 +14558,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1977724853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977724849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1830b23b70b4b443b97a32cc0c3cf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicChangeTrigger
+  interiorMusicArea: 1
 --- !u!1 &1981030061
 GameObject:
   m_ObjectHideFlags: 0
