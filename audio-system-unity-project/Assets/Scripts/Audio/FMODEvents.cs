@@ -8,6 +8,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference coinIdle { get; private set; }
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerFootsteps { get; private set; }
+    [field: Header("Ambience")]
+    [field: SerializeField] public EventReference windAmbience { get; private set; }
 
     public static FMODEvents instance { get; private set; }
 

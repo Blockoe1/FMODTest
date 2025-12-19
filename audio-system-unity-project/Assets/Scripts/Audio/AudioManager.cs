@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     private List<StudioEventEmitter> eventEmitters;
     public static AudioManager instance { get; private set; }
 
+    private EventInstance ambienceEventInst;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -22,6 +24,28 @@ public class AudioManager : MonoBehaviour
         }
         eventInsts = new List<EventInstance> ();
         eventEmitters = new List<StudioEventEmitter> ();
+    }
+
+    private void Start()
+    {
+        InitializeAmbience(FMODEvents.instance.windAmbience);
+    }
+
+    private void InitializeAmbience(EventReference ambienceEvent)
+    {
+        ambienceEventInst = CreateAudioInstance(ambienceEvent);
+        ambienceEventInst.start();
+    }
+
+    public void SetAmbienceParameter(string paramName, float paramValue)
+    {
+        ambienceEventInst.setParameterByName(paramName, paramValue);
+    }
+    public float GetAmbienceParameter(string paramName)
+    {
+        float outVal;
+        ambienceEventInst.getParameterByName(paramName, out outVal);
+        return outVal;
     }
 
     /// <summary>
