@@ -53,7 +53,7 @@ public class CharacterController2D : MonoBehaviour
     {
         if (disableMovement) 
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             UpdateAnimator();
             return;
         }
@@ -101,7 +101,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void HandleHorizontalMovement()
     {
-        rb.velocity = new Vector2(moveDirection.x * runSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveDirection.x * runSpeed, rb.linearVelocity.y);
     }
 
     private void HandleJumping()
@@ -109,7 +109,7 @@ public class CharacterController2D : MonoBehaviour
         if (isGrounded && jumpPressed)
         {
             isGrounded = false;
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
         }
     }
 
@@ -140,8 +140,8 @@ public class CharacterController2D : MonoBehaviour
     private void UpdateAnimator()
     {
         animator.SetBool("isGrounded", isGrounded);
-        animator.SetFloat("movementX", rb.velocity.x);
-        animator.SetFloat("movementY", rb.velocity.y);
+        animator.SetFloat("movementX", rb.linearVelocity.x);
+        animator.SetFloat("movementY", rb.linearVelocity.y);
     }
 
     private IEnumerator HandleDeath() 
@@ -149,7 +149,7 @@ public class CharacterController2D : MonoBehaviour
         // freeze player movemet
         rb.gravityScale = 0;
         disableMovement = true;
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         // prevent other collisions
         coll.enabled = false;
         // hide the player visual
