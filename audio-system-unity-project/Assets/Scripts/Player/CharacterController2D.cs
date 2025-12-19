@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using FMOD.Studio;
 
 // This script is a basic 2D character controller that allows
 // the player to run and jump.
@@ -20,6 +21,9 @@ public class CharacterController2D : MonoBehaviour
     [Header("Ground Layer")]
     [SerializeField] private LayerMask groundLayers;
 
+    // Audio
+    private EventInstance footstepInstance;
+
     // components attached to player
     private BoxCollider2D coll;
     private Rigidbody2D rb;
@@ -35,6 +39,11 @@ public class CharacterController2D : MonoBehaviour
     private bool facingRight = true;
     private bool isGrounded = false;
     private bool disableMovement = false;
+
+    private void Start()
+    {
+        footstepInstance = AudioManager.instance.CreateAudioInstance(FMODEvents.instance.playerFootsteps);
+    }
 
     private void Awake()
     {
@@ -55,6 +64,7 @@ public class CharacterController2D : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
             UpdateAnimator();
+            UpdateSound();
             return;
         }
 
@@ -69,6 +79,8 @@ public class CharacterController2D : MonoBehaviour
         UpdateFacingDirection();
 
         UpdateAnimator();
+
+        UpdateSound();
     }
 
     private void HandleInput() 
@@ -196,4 +208,22 @@ public class CharacterController2D : MonoBehaviour
         disableMovement = false;
     }
 
+    private void UpdateSound()
+    {
+        // Check RB velocity and OnGround to determine if footsteps should be run.
+        if (Mathf.Abs(rb.linearVelocity.x) > 0.1f && isGrounded)
+        {
+            // Get the current state of the footsteps sound (playing or paused.)
+            PLAYBACK_STATE pbs;
+            footstepInstance.getPlaybackState(out pbs);
+            if (pbs == PLAYBACK_STATE.STOPPED)
+            {
+                footstepInstance.start();
+            }
+        }
+        else
+        {
+            footstepInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
 }
