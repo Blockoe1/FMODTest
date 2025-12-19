@@ -1,10 +1,12 @@
-//using FMODUnity;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(StudioEventEmitter))]
 public class Coin : MonoBehaviour
 {
+    private StudioEventEmitter emitter;
     //[SerializeField] private EventReference coinSound;
     private SpriteRenderer visual;
     private ParticleSystem collectParticle;
@@ -15,6 +17,12 @@ public class Coin : MonoBehaviour
         visual = this.GetComponentInChildren<SpriteRenderer>();
         collectParticle = this.GetComponentInChildren<ParticleSystem>();
         collectParticle.Stop();
+    }
+
+    private void Start()
+    {
+        emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.coinIdle, gameObject);
+        emitter.Play();
     }
 
     private void OnTriggerEnter2D() 
@@ -37,6 +45,8 @@ public class Coin : MonoBehaviour
 
         // Play the collected sound using the FMODEvents singleton
         AudioManager.instance.PlayOneShot(FMODEvents.instance.coinCollected, transform.position);
+        // Stop the idle sound.
+        emitter.Stop();
     }
 
 }

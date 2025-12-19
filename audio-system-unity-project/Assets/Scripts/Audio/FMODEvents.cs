@@ -5,6 +5,7 @@ public class FMODEvents : MonoBehaviour
 {
     [field: Header("Coin SFX")]
     [field: SerializeField] public EventReference coinCollected { get; private set; }
+    [field: SerializeField] public EventReference coinIdle { get; private set; }
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerFootsteps { get; private set; }
 

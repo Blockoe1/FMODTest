@@ -4914,6 +4914,7 @@ GameObject:
   - component: {fileID: 2069094418082097433}
   - component: {fileID: 147805286}
   - component: {fileID: 147805285}
+  - component: {fileID: 5875260812270505162}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -4986,13 +4987,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d2556ef4c1a449b220096365c28a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinSound:
+--- !u!114 &5875260812270505162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153057867823157816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
     Guid:
-      Data1: 481787520
-      Data2: 1333858873
-      Data3: -1718010183
-      Data4: 466004688
-    Path: event:/Coin
+      Data1: -2034080484
+      Data2: 1234302686
+      Data3: -1352439119
+      Data4: 1107405061
+    Path: event:/SFX/Coin/CoinIdle
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 3
 --- !u!1 &6231369893860463874
 GameObject:
   m_ObjectHideFlags: 0

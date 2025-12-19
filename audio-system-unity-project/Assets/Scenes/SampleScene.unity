@@ -12701,14 +12701,21 @@ MonoBehaviour:
       Data2: 1333858873
       Data3: -1718010183
       Data4: 466004688
-    Path: event:/Coin
+    Path: event:/SFX/Coin/Coin
+  <coinIdle>k__BackingField:
+    Guid:
+      Data1: -2034080484
+      Data2: 1234302686
+      Data3: -1352439119
+      Data4: 1107405061
+    Path: event:/SFX/Coin/CoinIdle
   <playerFootsteps>k__BackingField:
     Guid:
       Data1: 577263687
       Data2: 1083559103
       Data3: 1242291846
       Data4: 826288623
-    Path: event:/PlayerFootstepts
+    Path: event:/SFX/Player/PlayerFootstepts
 --- !u!1 &914068224
 GameObject:
   m_ObjectHideFlags: 0
@@ -13916,10 +13923,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1133043225}
     m_Modifications:
-    - target: {fileID: 2069094418082097433, guid: 23aef64010e11264082c3e785f37e8e3, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2069094418082097433, guid: 23aef64010e11264082c3e785f37e8e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4

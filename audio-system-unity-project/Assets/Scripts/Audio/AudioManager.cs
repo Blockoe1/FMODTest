@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     private List<EventInstance> eventInsts;
+    private List<StudioEventEmitter> eventEmitters;
     public static AudioManager instance { get; private set; }
 
     private void Awake()
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
         eventInsts = new List<EventInstance> ();
+        eventEmitters = new List<StudioEventEmitter> ();
     }
 
     /// <summary>
@@ -39,6 +41,14 @@ public class AudioManager : MonoBehaviour
         return evInst;
     }
 
+    public StudioEventEmitter InitializeEventEmitter(EventReference sound, GameObject gameObj)
+    {
+        StudioEventEmitter eventEmit = gameObj.GetComponent<StudioEventEmitter>();
+        eventEmit.EventReference = sound;
+        eventEmitters.Add(eventEmit);
+        return eventEmit;
+    }
+
     /// <summary>
     /// Cleans up all event instances when the scene is unloaded.
     /// </summary>
@@ -48,6 +58,10 @@ public class AudioManager : MonoBehaviour
         {
             evInst.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             evInst.release();
+        }
+        foreach(StudioEventEmitter eventEmitter in eventEmitters)
+        {
+            eventEmitter.Stop();
         }
     }
 
