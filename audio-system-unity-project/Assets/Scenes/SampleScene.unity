@@ -12280,7 +12280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
   nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 924048298}
 --- !u!4 &565403082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069094418082097433, guid: 23aef64010e11264082c3e785f37e8e3, type: 3}
